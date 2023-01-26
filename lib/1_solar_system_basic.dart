@@ -54,16 +54,35 @@ class SolarSystemBasicPainter extends CustomPainter {
     final earthPaint = Paint()..color = Colors.blue.withOpacity(0.9);
 
     const earthRadius = 20.0;
+    const earthOrbitRadius = 200.0;
+    const moonOrbitRadius = 40.0;
+    const moonRadius = 10.0;
 
-    canvas.drawCircle(Offset(size.width / 2, size.height / 2), 200, orbitPaint);
+    canvas.drawCircle(
+        Offset(size.width / 2, size.height / 2), earthOrbitRadius, orbitPaint);
 
     canvas.drawCircle(Offset(size.width / 2, size.height / 2), 100, sunPaint);
 
     canvas.drawCircle(
-        Offset(size.width / 2 + 200 * cos(animation.value),
-            size.height / 2 + 200 * sin(animation.value)),
+        Offset(size.width / 2 + earthOrbitRadius * cos(animation.value),
+            size.height / 2 + earthOrbitRadius * sin(animation.value)),
         earthRadius,
         earthPaint);
+
+    final moonX = size.width / 2 +
+        earthOrbitRadius * cos(animation.value) +
+        moonOrbitRadius * cos(animation.value * 6);
+    final moonY = size.height / 2 +
+        earthOrbitRadius * sin(animation.value) +
+        moonOrbitRadius * sin(animation.value * 6);
+
+    canvas.drawCircle(
+        Offset(size.width / 2 + earthOrbitRadius * cos(animation.value),
+            size.height / 2 + earthOrbitRadius * sin(animation.value)),
+        moonOrbitRadius,
+        orbitPaint);
+    final moonPaint = Paint()..color = Colors.grey.shade200;
+    canvas.drawCircle(Offset(moonX, moonY), moonRadius, moonPaint);
   }
 
   @override
