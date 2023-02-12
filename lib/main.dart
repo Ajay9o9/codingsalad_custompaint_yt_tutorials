@@ -1,6 +1,5 @@
+import 'package:canvas_youtube_series/backgrounds/particles_animation.dart';
 import 'package:flutter/material.dart';
-
-import '1_solar_system_basic.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +14,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData.dark(),
       themeMode: ThemeMode.system,
-      home: SolarSystemBasic(),
+      home: ParticleAnimations(),
     );
   }
 }

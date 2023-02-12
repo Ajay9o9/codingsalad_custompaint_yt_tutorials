@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 
 class SolarSystemBasic extends StatefulWidget {
   const SolarSystemBasic({Key? key}) : super(key: key);
@@ -13,13 +14,22 @@ class _SolarSystemBasicState extends State<SolarSystemBasic>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
 
+  void startTicker(TickerCallback onTick) {
+    Ticker ticker = Ticker(onTick);
+    ticker.start();
+  }
+
   @override
   void initState() {
     _animationController = AnimationController(
-        vsync: this, duration: Duration(seconds: 10), upperBound: 2 * pi);
+        vsync: this, duration: const Duration(seconds: 10), upperBound: 2 * pi);
     _animationController.addListener(() {
       setState(() {});
     });
+    startTicker((elapsed) {
+      // print('elapsed: $elapsed');
+    });
+
     _animationController.forward();
     _animationController.repeat();
     super.initState();
