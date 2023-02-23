@@ -38,7 +38,7 @@ class _SolarSystemBasicState extends State<SolarSystemBasic>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       body: InteractiveViewer(
         maxScale: 10,
         child: CustomPaint(
