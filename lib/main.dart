@@ -1,5 +1,6 @@
-import 'package:canvas_youtube_series/backgrounds/particles_animation.dart';
 import 'package:flutter/material.dart';
+
+import 'baloon_animation/baloon_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData.dark(),
       themeMode: ThemeMode.system,
-      home: ParticleAnimations(),
+      home: BaloonPage(),
     );
   }
 }
